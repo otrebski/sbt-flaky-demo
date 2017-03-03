@@ -1,3 +1,5 @@
+package actors
+
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.testkit.{DefaultTimeout, ImplicitSender, TestKit}
 import com.typesafe.config.ConfigFactory
@@ -22,7 +24,7 @@ class ForwardingActorSpec
 
   import ForwardingActorSpec._
 
-  val forwardRef = system.actorOf(Props(classOf[ForwardingActor], testActor))
+  val forwardRef: ActorRef = system.actorOf(Props(classOf[ForwardingActor], testActor))
 
   override def afterAll {
     shutdown()
@@ -110,7 +112,7 @@ object ForwardingActorSpec {
     * An Actor that forwards every message to a next Actor
     */
   class ForwardingActor(next: ActorRef) extends Actor with LazyLogging {
-    def receive = {
+    def receive: PartialFunction[Any, Unit] = {
       case msg =>
         logger.info(s"Forwarding message $msg to $next")
         next ! msg
