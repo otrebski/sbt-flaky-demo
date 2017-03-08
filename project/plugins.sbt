@@ -1,3 +1,9 @@
-addSbtPlugin("pl.otrebski" % "sbt-flaky" % "0.1")
 
-resolvers += "Otrebski" at "http://otrebski.bintray.com/otrebski"
+// adding the repo
+resolvers += Resolver.url(
+  "flaky",
+  url("http://otrebski.bintray.com/sbt-plugins"))(
+  Resolver.ivyStylePatterns
+ )
+
+addSbtPlugin("pl.otrebski" % "sbt-flaky" % "0.1")
