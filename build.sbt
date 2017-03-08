@@ -17,3 +17,7 @@ libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0"
 
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.7" % "test"
 
+libraryDependencies += "junit" % "junit" % "4.12" % "test"
+
+libraryDependencies += "com.novocode" % "junit-interface" % "0.10" % "test"
+
