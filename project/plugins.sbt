@@ -1,4 +1,3 @@
-
 // adding the repo
 resolvers += Resolver.url(
   "flaky",
