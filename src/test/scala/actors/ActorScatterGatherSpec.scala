@@ -1,3 +1,5 @@
+package actors
+
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.testkit.{DefaultTimeout, ImplicitSender, TestKit}
 import com.typesafe.config.ConfigFactory
@@ -70,7 +72,7 @@ object ActorScatterGatherSpec {
     * An Actor that scatter message
     */
   class Scatter(next: ActorRef) extends Actor with LazyLogging {
-    def receive = {
+    def receive: PartialFunction[Any, Unit] = {
       case Protocol.ListOfStrings(list) =>
         logger.info(s"Scattering list of strings")
         val gather = context.system.actorOf(Props(classOf[Gather], next, list.size))
@@ -90,7 +92,7 @@ object ActorScatterGatherSpec {
 
     import akka.actor._
 
-    def receive = {
+    def receive: PartialFunction[Any, Unit] = {
       case Protocol.OneString(msg) =>
         logger.info(s"Received OneString($msg)")
         import scala.concurrent.ExecutionContext.Implicits.global

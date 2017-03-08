@@ -1,17 +1,22 @@
-import com.typesafe.scalalogging._
 import org.scalatest._
 
-import scala.collection.mutable
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
+import scala.concurrent.{Await, Future}
+import scala.language.postfixOps
 
-class Filtering extends FlatSpec with Matchers with LazyLogging {
+class Filtering extends FlatSpec with Matchers {
 
   "A collection" should "be filtered with many filters" in {
-    logger.info("Staring test")
     var list = (1 until 20000).toList.withFilter(_ => true)
-    val count = scala.util.Random.nextInt(4000)
+    val count = scala.util.Random.nextInt(5000)
     for (i <- 1 until count) {
       list = list.withFilter(item => item != i)
     }
-    list.map(identity).head shouldBe count
+    val f: Future[Int] = Future {
+      list.map(identity).head
+    }
+
+    Await.result(f, 500 millis) shouldBe count
    }
 }
