@@ -3,7 +3,7 @@ lazy val library = (project in file("."))
 
 resolvers += "Otrebski" at "http://otrebski.bintray.com/sbt-plugins"
 
-name := "custom-task"
+name := "sbt-flaky-demo"
 
 scalaVersion := "2.11.8"
 
@@ -21,3 +21,6 @@ libraryDependencies += "junit" % "junit" % "4.12" % "test"
 
 libraryDependencies += "com.novocode" % "junit-interface" % "0.10" % "test"
 
+flakyLogLevelInTask := Level.Error
+
+flakySlackHook := Some("https://hooks.slack.com/services/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")
