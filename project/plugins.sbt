@@ -1,1 +1,1 @@
-addSbtPlugin("pl.otrebski" % "sbt-flaky" % "0.12")
+addSbtPlugin("pl.otrebski" % "sbt-flaky" % "0.13")
