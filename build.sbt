@@ -23,6 +23,10 @@ libraryDependencies += "com.novocode" % "junit-interface" % "0.10" % "test"
 
 flakyLogLevelInTask := Level.Error
 
-flakySlackHook := Some("https://hooks.slack.com/services/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")
+flakySlackHook := None
 
-flakyHistoryDir:=Some(new File("history"))
+flakyHistoryDir := Some(new File("history"))
+
+flakyHtmlReportUrl := Some("https://otrebski.github.io/sbt-flaky-demo/")
+
+flakySlackDetailedReport := true
