@@ -1,6 +1,5 @@
 package date;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,13 +19,15 @@ public class DateExtractor {
     "([0-2][0-9]:[0-5][0-9])\\s[0-3][0-9]\\.[0-2][0-9]\\.\\d{4}"
   );
 
-  public static List<Date> extract(String string) throws ParseException {
+  public static List<Date> extract(String string) {
     final Matcher matcher = pattern.matcher(string);
     final ArrayList<Date> result = new ArrayList<>();
     while (matcher.find()){
       final String group = matcher.group(0);
-      final Date parse = format.parse(group);
-      result.add(parse);
+      try {
+        final Date parse = format.parse(group);
+        result.add(parse);
+      } catch (Exception ignore){}
     }
     return result;
   }

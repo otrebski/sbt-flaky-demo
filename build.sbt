@@ -25,4 +25,8 @@ flakyLogLevelInTask := Level.Error
 
 flakySlackHook := Some("https://hooks.slack.com/services/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")
 
-flakyHistoryDir:=Some(new File("history"))
+flakyHistoryDir := Some(new File("history"))
+
+flakyHtmlReportUrl := Some("http://localhost:63342/sbt-flaky-demo/library/target/flaky-test-reports-html/")
+
+flakySlackDetailedReport := true

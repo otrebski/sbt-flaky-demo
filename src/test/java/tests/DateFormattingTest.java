@@ -17,7 +17,7 @@ public class DateFormattingTest {
     final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SSS");
     simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-    final List<String> formatted = LongStream.range(0, 4)
+    final List<String> formatted = LongStream.range(0, 1)
       .parallel()
       .mapToObj(simpleDateFormat::format)
       .collect(Collectors.toList());
@@ -33,7 +33,7 @@ public class DateFormattingTest {
     final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SSS");
     simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-    final List<String> formatted = LongStream.range(0, 40)
+    final List<String> formatted = LongStream.range(0, 1)
       .mapToObj(simpleDateFormat::format)
       .collect(Collectors.toList());
 
