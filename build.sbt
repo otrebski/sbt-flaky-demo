@@ -29,4 +29,6 @@ flakyHistoryDir := Some(new File("history"))
 
 flakyHtmlReportUrl := Some("https://otrebski.github.io/sbt-flaky-demo/")
 
+flakyHtmlReportDir := "../docs"
+
 flakySlackDetailedReport := true
