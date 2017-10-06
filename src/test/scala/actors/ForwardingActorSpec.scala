@@ -49,10 +49,10 @@ class ForwardingActorSpec
       }
     }
 
-    "Forwards in a chains of 100 and 105" in {
+    "Forwards in a chains of 100 and 101" in {
       val forwardRef = system.actorOf(Props(classOf[ForwardingActor], testActor))
       val entryRef1 = (1 to 100).foldLeft(forwardRef)((ref, i) => system.actorOf(Props(classOf[ForwardingActor], ref)))
-      val entryRef2 = (1 to 105).foldLeft(forwardRef)((ref, i) => system.actorOf(Props(classOf[ForwardingActor], ref)))
+      val entryRef2 = (1 to 101).foldLeft(forwardRef)((ref, i) => system.actorOf(Props(classOf[ForwardingActor], ref)))
       within(500 millis) {
         entryRef1 ! "test1"
         entryRef2 ! "test2"
@@ -73,10 +73,10 @@ class ForwardingActorSpec
       }
     }
 
-    "Forwards in a chains of 100 and 110" in {
+    "Forwards in a chains of 100 and 102" in {
       val forwardRef = system.actorOf(Props(classOf[ForwardingActor], testActor))
       val entryRef1 = (1 to 100).foldLeft(forwardRef)((ref, i) => system.actorOf(Props(classOf[ForwardingActor], ref)))
-      val entryRef2 = (1 to 110).foldLeft(forwardRef)((ref, i) => system.actorOf(Props(classOf[ForwardingActor], ref)))
+      val entryRef2 = (1 to 102).foldLeft(forwardRef)((ref, i) => system.actorOf(Props(classOf[ForwardingActor], ref)))
       within(500 millis) {
         entryRef1 ! "test1"
         entryRef2 ! "test2"
@@ -84,10 +84,10 @@ class ForwardingActorSpec
         expectMsg("test2")
       }
     }
-    "Forwards in a chains of 100 and 120" in {
+    "Forwards in a chains of 100 and 103" in {
       val forwardRef = system.actorOf(Props(classOf[ForwardingActor], testActor))
       val entryRef1 = (1 to 100).foldLeft(forwardRef)((ref, i) => system.actorOf(Props(classOf[ForwardingActor], ref)))
-      val entryRef2 = (1 to 120).foldLeft(forwardRef)((ref, i) => system.actorOf(Props(classOf[ForwardingActor], ref)))
+      val entryRef2 = (1 to 103).foldLeft(forwardRef)((ref, i) => system.actorOf(Props(classOf[ForwardingActor], ref)))
       within(500 millis) {
         entryRef1 ! "test1"
         entryRef2 ! "test2"
