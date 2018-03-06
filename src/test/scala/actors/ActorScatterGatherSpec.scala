@@ -33,7 +33,7 @@ class ActorScatterGatherSpec
 
     "Forward one element list" in {
       val scatter = system.actorOf(Props(classOf[Scatter], testActor))
-      within(150 millis) {
+      within(250 millis) {
         scatter ! Protocol.ListOfStrings(List("test1"))
         expectMsg(Protocol.Joined(List("test1")))
       }
@@ -41,7 +41,7 @@ class ActorScatterGatherSpec
 
     "Forward 2 element list" in {
       val scatter = system.actorOf(Props(classOf[Scatter], testActor))
-      within(150 millis) {
+      within(250 millis) {
         val list = (1 to 2).map(i => s"message $i").toList
         scatter ! Protocol.ListOfStrings(list)
         expectMsg(Protocol.Joined(list))
@@ -49,7 +49,7 @@ class ActorScatterGatherSpec
     }
     "Forward 4  element list" in {
       val scatter = system.actorOf(Props(classOf[Scatter], testActor))
-      within(150 millis) {
+      within(250 millis) {
         val list = (1 to 4).map(i => s"message $i").toList
         scatter ! Protocol.ListOfStrings(list)
         expectMsg(Protocol.Joined(list))
